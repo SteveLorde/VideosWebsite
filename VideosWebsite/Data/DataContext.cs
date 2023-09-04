@@ -10,6 +10,16 @@ public class DataContext : DbContext
             
     }
     
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        
+    }
+    
     //entites
     public DbSet<User> Users { get; set; }
     public DbSet<Video> Videos { get; set; }

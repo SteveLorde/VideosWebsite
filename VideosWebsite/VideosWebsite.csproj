@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\VideosStorage\" />
+      <ProjectReference Include="..\VideosStorage\VideosStorage.csproj" />
     </ItemGroup>
 
 </Project>

@@ -6,5 +6,6 @@ public class Video
     public string Title { get; set; }
     public DateTime ReleasedDate { get; set; }
     public List<string> Tags { get; set; }
+    public User UploadedBy { get; set; }
 
 }
