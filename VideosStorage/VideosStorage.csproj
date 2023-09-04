@@ -7,7 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Storage\" />
+      <Folder Include="Storage\GIFs\" />
+      <Folder Include="Storage\Videos1\" />
     </ItemGroup>
 
 </Project>
