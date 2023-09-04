@@ -1,6 +1,16 @@
-﻿namespace VideosWebsite.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using VideosWebsite.Models;
 
-public class DataContext
+namespace VideosWebsite.Data;
+
+public class DataContext : DbContext
 {
+    //entites
+    public DbSet<User> Users { get; set; }
+    public DbSet<Video> Videos { get; set; }
+    
+    
+    
+    
     
 }

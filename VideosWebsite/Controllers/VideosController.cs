@@ -1,22 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace VideosWebsite.Controllers
+namespace VideosWebsite.Controllers;
+
+public class VideosController : Controller
 {
-    public class VideosController : Controller
+    // GET
+    public IActionResult GetVideos()
     {
-        public void StoreVideo()
-        {
-            
-        }
-
-        public IActionResult GetVideo()
-        {
-            return Ok();
-        }
+        return Ok();
     }
+
+    public IActionResult RegisterVideo()
+    {
+        return Ok();
+    }
+    
+    
     
 }
