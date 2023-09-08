@@ -9,17 +9,13 @@ public class DataContext : DbContext
     {
             
     }
-    
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+        modelBuilder.Entity<Video>().Property(e => e.Tags).HasConversion(x => string.Join(',', x),
+            v => v.Split(',', StringSplitOptions.RemoveEmptyEntries));
     }
-    
+
     //entites
     public DbSet<User> Users { get; set; }
     public DbSet<Video> Videos { get; set; }

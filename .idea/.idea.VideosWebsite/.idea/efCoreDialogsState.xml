@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EfCoreDialogsState">
+    <option name="keyValueStorage">
+      <map>
+        <entry key="Common:9cb0e985-c9de-4afb-8280-03a576469660:dbContext" value="VideosWebsite.Data.DataContext" />
+        <entry key="Common:a03b56ac-d3df-4716-8544-92c51dc6163c:dbContext" value="VideosWebsite.Data.DataContext" />
+        <entry key="Common:buildConfiguration" value="Debug" />
+        <entry key="Common:noBuild" value="false" />
+        <entry key="Common:outputFolder" value="..\VideosStorage\Data\DatabaseMigrations" />
+        <entry key="Common:useDefaultConnection" value="true" />
+      </map>
+    </option>
+  </component>
+</project>
