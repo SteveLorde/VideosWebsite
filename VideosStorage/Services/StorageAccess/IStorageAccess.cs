@@ -4,7 +4,7 @@ namespace VideosStorage;
 
 public interface IStorageAccess
 {
-    public Task ShowVideosFromStorage();
+    public List<Video> GetVideosFromStorage();
     public Task GetVideoFromStorage(int id);
     public Task StoreVideoInStorage(Video video);
     

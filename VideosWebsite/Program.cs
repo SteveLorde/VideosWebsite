@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using VideosStorage;
 using VideosWebsite.Data;
+using VideosWebsite.Services.VideoAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<IStorageAccess,StorageAccess>();
+builder.Services.AddScoped<IVideoAccess, VideoAccess>();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DataBaseConnectionString")));
 
 var app = builder.Build();

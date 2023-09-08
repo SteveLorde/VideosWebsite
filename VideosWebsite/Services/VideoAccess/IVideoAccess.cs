@@ -1,9 +1,11 @@
-﻿namespace VideosWebsite.Services.VideoAccess;
+﻿using VideosWebsite.Models;
+
+namespace VideosWebsite.Services.VideoAccess;
 
 public interface IVideoAccess
 {
     //Videos
-    public Task ShowVideos();
+    public List<Video> GetVideos();
     public Task GetVideo();
     public Task StoreVideo();
     //GIFs

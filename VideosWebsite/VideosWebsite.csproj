@@ -20,4 +20,8 @@
       <ProjectReference Include="..\VideosStorage\VideosStorage.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Views\PartialViews\" />
+    </ItemGroup>
+
 </Project>

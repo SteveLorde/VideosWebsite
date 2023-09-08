@@ -1,0 +1,57 @@
+﻿@using VideosWebsite.Services.VideoAccess
+@inject IVideoAccess videoaccess;
+
+@{
+    ViewData["Title"] = "Videos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var videoslist = "";
+}
+
+<h1>VideosPage</h1>
+
+<div>
+    <input type="text"/>
+</div>
+
+
+<form method="post" asp-action="GetVideos">
+    <button type="submit">Refresh</button>
+</form>
+
+@foreach (var video in videoslist)
+{
+    
+}
+
+
+
+
+
+
+
+
+
+
+<!--
+<script>
+    function getData() {
+        $.ajax({
+            url: "/Videos/GetVideos", // Replace 'Controller' with the actual name of your controller
+            type: "GET",
+            success: function (data) {
+                // Process the returned data
+                // Update the view dynamically using JavaScript
+            },
+            error: function (xhr, status, error) {
+                // Handle any errors that occur during the AJAX call
+            }
+        });
+    }
+
+    // Call the function when the view loads or on a specific event
+    $(document).ready(function () {
+        getData();
+    });
+</script>
+-->
+
