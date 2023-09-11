@@ -30,6 +30,11 @@ class VideoAccess : IVideoAccess
         return video;
     }
 
+    public async Task StoreVideo()
+    {
+        
+    }
+
     public async Task StoreVideo(Video video)
     {
         _storageaccess.StoreVideoInStorage(video);

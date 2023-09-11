@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideosWebsite.Models;
 using VideosWebsite.Services.VideoAccess;
 
 namespace VideosWebsite.Controllers;
@@ -27,10 +28,29 @@ public class VideosController : Controller
         return View("~/Views/Pages/VideosPage.cshtml");
     }
     
-    public Task GetVideos()
+    public List<Video> GetVideos()
     {
         var videos = _videoaccess.GetVideos();
         return videos;
+    }
+
+    [HttpPost]
+    public async Task<string> StoreVideo(IFormFile videofile)
+    {
+        if (videofile.Length == 0)
+        {
+            return "Video File is not accepted";
+        }
+        else
+        {
+            Video video = new Video();
+            video.Title = videofile.FileName;
+            
+            return "Video uploaded successfully";
+        }
+        
+        
+        
     }
 
 

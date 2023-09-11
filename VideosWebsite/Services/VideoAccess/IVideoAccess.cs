@@ -6,7 +6,7 @@ public interface IVideoAccess
 {
     //Videos
     public List<Video> GetVideos();
-    public Task GetVideo();
+    public Task GetVideo(int id);
     public Task StoreVideo();
     //GIFs
     public Task ShowGIFs();

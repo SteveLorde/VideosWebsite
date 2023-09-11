@@ -13,10 +13,14 @@
     <input type="text"/>
 </div>
 
+<div>
+    @{Html.RenderPartial("../PartialViews/_TagsBar.cshtml");}
+</div>
 
-<form method="post" asp-action="GetVideos">
-    <button type="submit">Refresh</button>
-</form>
+
+<div>
+    @{Html.RenderPartial("UploadVideo");}
+</div>
 
 @foreach (var video in videoslist)
 {
