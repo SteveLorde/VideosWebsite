@@ -17,7 +17,7 @@ public class VideosController : Controller
     //AUTOMATIC GET
     public IActionResult Index()
     {
-        var videos = GetVideos();
+        var videos = _videoaccess.GetVideos();
         return View(videos);
     }
     
@@ -28,28 +28,20 @@ public class VideosController : Controller
         return View("~/Views/Pages/VideosPage.cshtml");
     }
     
-    public List<Video> GetVideos()
-    {
-        var videos = _videoaccess.GetVideos();
-        return videos;
-    }
+
 
     [HttpPost]
     public async Task<string> StoreVideo(IFormFile videofile)
     {
-        if (videofile.Length == 0)
+        try
         {
-            return "Video File is not accepted";
+            string path = Path.Combine("VideosStorage/Storage/Videos1");
+            return "Uploaded Successfully";
         }
-        else
+        catch (Exception ex)
         {
-            Video video = new Video();
-            video.Title = videofile.FileName;
-            
-            return "Video uploaded successfully";
+            return "Failed";
         }
-        
-        
         
     }
 

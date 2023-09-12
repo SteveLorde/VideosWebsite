@@ -9,9 +9,11 @@
     <ItemGroup>
       <Folder Include="Data\DatabaseMigrations\" />
       <Folder Include="Storage\GIFs\" />
+      <Folder Include="Storage\Thumbnails\" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="FFMpegCore" Version="5.1.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.10" />
     </ItemGroup>

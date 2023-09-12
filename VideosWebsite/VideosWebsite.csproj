@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FFMpegCore" Version="5.1.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.10" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
@@ -19,6 +20,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\VideosStorage\VideosStorage.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\videos\Video1.mp4" />
+      <None Include="wwwroot\videos\Video2.webm" />
     </ItemGroup>
 
 </Project>

@@ -18,13 +18,16 @@ class VideoAccess : IVideoAccess
     
     //Methods
     //-------
-    public List<Video> GetVideos()
+    public string[] GetVideos()
     {
-        var videos = _storageaccess.GetVideosFromStorage();
-        return videos;
+        //1-get thumbnails
+        //2-return thumbnails
+        //DETECT FILES
+            string[] videofiles =  Directory.GetFiles("../VideosStorage/Storage/Videos1");
+            return videofiles;
     }
 
-    public Task GetVideo(int id)
+        public Task GetVideo(int id)
     {
         var video = _storageaccess.GetVideoFromStorage(id);
         return video;

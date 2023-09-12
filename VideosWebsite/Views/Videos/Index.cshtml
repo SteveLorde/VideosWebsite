@@ -7,6 +7,8 @@
     var videoslist = "";
 }
 
+@model string[]
+
 <h1>VideosPage</h1>
 
 <div>
@@ -17,17 +19,16 @@
     @{Html.RenderPartial("../PartialViews/_TagsBar.cshtml");}
 </div>
 
-
 <div>
     @{Html.RenderPartial("UploadVideo");}
 </div>
 
-@foreach (var video in videoslist)
+@foreach (string videoFile in Model)
 {
-    
+    <video>
+        <source src="@Url.Content(videoFile)" type="video">
+    </video>
 }
-
-
 
 
 
