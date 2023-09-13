@@ -27,6 +27,16 @@ public class VideosController : Controller
     {
         return View("~/Views/Pages/VideosPage.cshtml");
     }
+
+    public IActionResult PlayVideo(int id)
+    {
+        //1-search for file using id
+        
+        //2-get file to play
+        
+        //3-return file and route to PlayVideo player view
+        return View("PlayVideo/PlayVideo");
+    }
     
 
 

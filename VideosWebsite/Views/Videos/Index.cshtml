@@ -1,4 +1,5 @@
 ﻿@using VideosWebsite.Services.VideoAccess
+@using Microsoft.AspNetCore.Html
 @inject IVideoAccess videoaccess;
 
 @{
@@ -25,8 +26,8 @@
 
 @foreach (string videoFile in Model)
 {
-    <video>
-        <source src="@Url.Content(videoFile)" type="video">
+    <video controls>
+        <source src="@videoFile">
     </video>
 }
 

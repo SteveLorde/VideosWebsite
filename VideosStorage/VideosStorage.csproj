@@ -18,4 +18,15 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.10" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Update="wwwroot\videos\Video1.mp4">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Update="wwwroot\videos\Video2.webm">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>

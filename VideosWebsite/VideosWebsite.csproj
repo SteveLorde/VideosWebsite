@@ -22,9 +22,4 @@
       <ProjectReference Include="..\VideosStorage\VideosStorage.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Include="wwwroot\videos\Video1.mp4" />
-      <None Include="wwwroot\videos\Video2.webm" />
-    </ItemGroup>
-
 </Project>

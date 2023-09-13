@@ -1,5 +1,6 @@
 ﻿using VideosStorage;
 using VideosWebsite.Models;
+using IFormFile = Microsoft.AspNetCore.Http.IFormFile;
 
 namespace VideosWebsite.Services.VideoAccess;
 
@@ -33,9 +34,20 @@ class VideoAccess : IVideoAccess
         return video;
     }
 
-    public async Task StoreVideo()
-    {
         
+        public async Task<string> StoreVideo(IFormFile videofile)
+    {
+        //1-receive video file
+        if (videofile.Length == 0)
+        {
+            return "Video saving error";
+        }
+        else
+        {
+            return "lol";
+            //2-generate thumbnail (with same name) and save it
+            //3-save video(physical) on storage
+        }
     }
 
     public async Task StoreVideo(Video video)
