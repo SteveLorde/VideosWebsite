@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VideosWebsite.Models;
 using VideosWebsite.Services.VideoAccess;
+using VideosWebsite.Services.VideoStream;
 
 namespace VideosWebsite.Controllers;
 
@@ -8,17 +9,21 @@ public class VideosController : Controller
 {
     //injections
     private IVideoAccess _videoaccess;
+    private IVideoStream _videostream;
 
-    public VideosController(IVideoAccess videoaccess)
+    public VideosController(IVideoAccess videoaccess, IVideoStream videostream)
     {
         _videoaccess = videoaccess;
+        _videostream = videostream;
     }
     
     //AUTOMATIC GET
     public IActionResult Index()
     {
-        var videos = _videoaccess.GetVideos();
-        return View(videos);
+        //var videos = _videoaccess.GetVideos();
+        var thumbnails = _videoaccess.GetThumbnails();
+        ViewData["thumbnailfiles"] = thumbnails;
+        return View();
     }
     
     
@@ -30,12 +35,8 @@ public class VideosController : Controller
 
     public IActionResult PlayVideo(int id)
     {
-        //1-search for file using id
-        
-        //2-get file to play
-        
-        //3-return file and route to PlayVideo player view
-        return View("PlayVideo/PlayVideo");
+        var video = _videostream.StreamVideo(id);
+        return View("PlayVideo/PlayVideo", video);
     }
     
 

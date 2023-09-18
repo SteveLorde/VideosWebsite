@@ -3,6 +3,7 @@ using Microsoft.Extensions.FileProviders;
 using VideosStorage;
 using VideosWebsite.Data;
 using VideosWebsite.Services.VideoAccess;
+using VideosWebsite.Services.VideoStream;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IStorageAccess,StorageAccess>();
 builder.Services.AddScoped<IVideoAccess, VideoAccess>();
+builder.Services.AddScoped<IVideoStream, VideoStream>();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DataBaseConnectionString")));
 
 var app = builder.Build();
@@ -24,6 +26,10 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions {
+    FileProvider =  new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"..\VideosStorage\Storage")),
+    RequestPath = "/videosstorage"
+});
 
 app.UseRouting();
 

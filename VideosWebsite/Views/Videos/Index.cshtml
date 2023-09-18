@@ -1,11 +1,12 @@
 ﻿@using VideosWebsite.Services.VideoAccess
 @using Microsoft.AspNetCore.Html
-@inject IVideoAccess videoaccess;
+@using VideosWebsite.Services
+@using VideosWebsite.Services.HTML_Helpers.GetFileName
 
 @{
     ViewData["Title"] = "Videos";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var videoslist = "";
+    var thumbnails = ViewData["thumbnailfiles"] as string[];
 }
 
 @model string[]
@@ -24,40 +25,10 @@
     @{Html.RenderPartial("UploadVideo");}
 </div>
 
-@foreach (string videoFile in Model)
+@foreach (var thumbnail in thumbnails!)
 {
-    <video controls>
-        <source src="@videoFile">
-    </video>
+    <img src="~/videosstorage/Thumbnails/@Html.GetFileName(thumbnail)" />
 }
 
 
-
-
-
-
-
-
-<!--
-<script>
-    function getData() {
-        $.ajax({
-            url: "/Videos/GetVideos", // Replace 'Controller' with the actual name of your controller
-            type: "GET",
-            success: function (data) {
-                // Process the returned data
-                // Update the view dynamically using JavaScript
-            },
-            error: function (xhr, status, error) {
-                // Handle any errors that occur during the AJAX call
-            }
-        });
-    }
-
-    // Call the function when the view loads or on a specific event
-    $(document).ready(function () {
-        getData();
-    });
-</script>
--->
 

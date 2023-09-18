@@ -6,6 +6,7 @@ public interface IVideoAccess
 {
     //Videos
     public string[] GetVideos();
+    public string[] GetThumbnails();
     public Task GetVideo(int id);
     public Task<string> StoreVideo(IFormFile videofile);
     //GIFs

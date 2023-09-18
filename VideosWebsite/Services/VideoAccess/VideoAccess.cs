@@ -24,11 +24,18 @@ class VideoAccess : IVideoAccess
         //1-get thumbnails
         //2-return thumbnails
         //DETECT FILES
-            string[] videofiles =  Directory.GetFiles("../VideosStorage/Storage/Videos1");
+            string[] videofiles =  Directory.GetFiles("/VideosStorage/Storage/Videos1");
             return videofiles;
     }
 
-        public Task GetVideo(int id)
+    public string[] GetThumbnails()
+    {
+        string thumbnailPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\VideosStorage\Storage\Thumbnails");
+        string[] thumbnails = Directory.GetFiles(thumbnailPath);
+        return thumbnails;
+    }
+
+    public Task GetVideo(int id)
     {
         var video = _storageaccess.GetVideoFromStorage(id);
         return video;
