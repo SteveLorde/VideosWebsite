@@ -29,15 +29,21 @@ class VideoStream : IVideoStream
         }
     }
 
-    public FileStreamResult StreamVideoTest()
+    public IResult StreamVideoTest()
     {
         string videotestpath = Path.Combine(storagepath2, "Video1.mp4");
         if (!System.IO.File.Exists(videotestpath))
         {
             throw new FileNotFoundException("The specified video file was not found.");
         }
+
+        var filestream = System.IO.File.OpenRead(videotestpath);
+        return Results.File(filestream, contentType: "video/mp4", fileDownloadName: "videostream",
+            enableRangeProcessing: true);
+        /*
         var videoteststream = new FileStream(videotestpath, FileMode.Open, FileAccess.Read, FileShare.Read);
         return new FileStreamResult(videoteststream, "video/mp4");
+        */
     }
 
     private FileStreamResult? GetVideo(int id)

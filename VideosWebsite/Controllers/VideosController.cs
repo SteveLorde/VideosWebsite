@@ -41,9 +41,14 @@ public class VideosController : Controller
     public IActionResult PlayVideoTest()
     {
         var video = _videostream.StreamVideoTest();
-        return View("PlayVideo/PlayVideo", video);
+        return View("PlayVideo/PlayVideo");
     }
-    
+
+    public IResult ReturnVideoTest()
+    {
+        var video = _videostream.StreamVideoTest();
+        return video;
+    }
 
 
     [HttpPost]
