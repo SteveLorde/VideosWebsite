@@ -22,7 +22,6 @@ public class VideosController : Controller
     {
         //var videos = _videoaccess.GetVideos();
         var thumbnails = _videoaccess.GetThumbnails();
-        ViewData["thumbnailfiles"] = thumbnails;
         return View();
     }
     
@@ -32,10 +31,16 @@ public class VideosController : Controller
     {
         return View("~/Views/Pages/VideosPage.cshtml");
     }
-
+    
     public IActionResult PlayVideo(int id)
     {
         var video = _videostream.StreamVideo(id);
+        return View("PlayVideo/PlayVideo", video);
+    }
+    
+    public IActionResult PlayVideoTest()
+    {
+        var video = _videostream.StreamVideoTest();
         return View("PlayVideo/PlayVideo", video);
     }
     

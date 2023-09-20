@@ -6,7 +6,6 @@
 @{
     ViewData["Title"] = "Videos";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var thumbnails = ViewData["thumbnailfiles"] as string[];
 }
 
 @model string[]
@@ -25,10 +24,14 @@
     @{Html.RenderPartial("UploadVideo");}
 </div>
 
-@foreach (var thumbnail in thumbnails!)
-{
-    <img src="~/videosstorage/Thumbnails/@Html.GetFileName(thumbnail)" />
-}
+<div class="thumbnailgrid">
+    @foreach (var thumbnail in Model)
+    {
+        <a href="@Url.Action("PlayVideo", "Videos")">
+            <img class="thumbnail" src="~/storage/Thumbnails/@Html.GetFileName(thumbnail)" />
+        </a>
+    }
+</div>
 
 
 

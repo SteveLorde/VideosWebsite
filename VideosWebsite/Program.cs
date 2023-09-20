@@ -28,7 +28,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseStaticFiles(new StaticFileOptions {
     FileProvider =  new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"..\VideosStorage\Storage")),
-    RequestPath = "/videosstorage"
+    RequestPath = "/storage"
 });
 
 app.UseRouting();
