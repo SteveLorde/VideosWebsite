@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using VideosWebsite.Data;
+using VideosWebsite.Models;
 
 namespace VideosWebsite.Services.UploadVideo;
 
@@ -6,11 +8,13 @@ class UploadVideo : IUploadVideo
 {
     private string storagepath = Path.Combine(Directory.GetCurrentDirectory() + @"..\VideosStorage\Storage\Videos");
     private IWebHostEnvironment _webhost;
-    public UploadVideo(IWebHostEnvironment webhost)
+    private DataContext _db;
+    public UploadVideo(IWebHostEnvironment webhost, DataContext db)
     {
         _webhost = webhost;
+        _db = db;
     }
-    public string UploadVideoFile(string videoname, string uploadername, IFormFile videofile)
+    public string UploadVideoFile(string videoname, string uploadername, DateTime datetime , IFormFile videofile)
     {
         //1-convert video
         bool checkconversion = ConvertVideo(videoname, videofile);
@@ -40,7 +44,7 @@ class UploadVideo : IUploadVideo
             StartInfo = new ProcessStartInfo
             {
                 FileName = ffmpegpath,
-                Arguments = $"-i {inputpath} {outputpath}",
+                Arguments = $"-i {inputpath} -c:v libvpx -crf 10 -b:v 1M -c:a libvorbis {outputpath}",
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
@@ -60,6 +64,32 @@ class UploadVideo : IUploadVideo
         }
 
     }
+
+    private bool RegisterNewVideo(string uploadername, DateTime datetime, string convertedvideopath)
+    {
+        //1-initialize new Video model object
+        Video newvideo = new Video();
+        //TEST SAVING
+        newvideo.UploadedBy = "UploaderTest";
+        string videotitle = Path.GetFileNameWithoutExtension(convertedvideopath);
+        newvideo.Title = videotitle;
+        newvideo.filePath = convertedvideopath;
+        newvideo.ReleaseDate = datetime;
+        _db.Videos.AddAsync(newvideo);
+        //production UPLOADERNAME
+        
+        //2-return True
+        bool newvideoexists = _db.Videos.Any(x => x.Title == videotitle);
+        if (newvideoexists)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
 }
 
 
