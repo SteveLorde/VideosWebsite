@@ -7,8 +7,8 @@ public interface IVideoAccess
     //Videos
     public string[] GetVideos();
     public string[] GetThumbnails();
-    public Task GetVideo(int id);
-    public Task<string> StoreVideo(IFormFile videofile);
+    public Video? GetVideo(int id);
+    public Task<string> UploadVideo(string videoname, string uploadername, IFormFile videofile);
     //GIFs
     public Task ShowGIFs();
     public Task GetGIF();

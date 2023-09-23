@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using VideosStorage;
 using VideosWebsite.Data;
+using VideosWebsite.Services.UploadVideo;
 using VideosWebsite.Services.VideoAccess;
 using VideosWebsite.Services.VideoStream;
 
@@ -12,6 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IStorageAccess,StorageAccess>();
 builder.Services.AddScoped<IVideoAccess, VideoAccess>();
 builder.Services.AddScoped<IVideoStream, VideoStream>();
+builder.Services.AddScoped<IUploadVideo, UploadVideo>();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DataBaseConnectionString")));
 
 var app = builder.Build();

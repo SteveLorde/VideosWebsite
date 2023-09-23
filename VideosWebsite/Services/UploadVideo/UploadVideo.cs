@@ -14,7 +14,7 @@ class UploadVideo : IUploadVideo
         _webhost = webhost;
         _db = db;
     }
-    public string UploadVideoFile(string videoname, string uploadername, DateTime datetime , IFormFile videofile)
+    public string UploadVideoFile(string videoname, string uploadername, IFormFile videofile)
     {
         //1-convert video
         bool checkconversion = ConvertVideo(videoname, videofile);
@@ -37,8 +37,13 @@ class UploadVideo : IUploadVideo
         string inputpath = Path.Combine(_webhost.WebRootPath, "VideosStorage", "Videos", videofile.FileName);
         var outputfilename = videoname + ".webm";
         string outputpath = Path.Combine(_webhost.WebRootPath, "VideosStorage", "Videos", outputfilename);
-
+        
+        
         //2-webm conversion process
+        
+        //GENERATE THUMBNAIL FOR VIDEO
+        
+        
         var process = new Process
         {
             StartInfo = new ProcessStartInfo
@@ -53,7 +58,7 @@ class UploadVideo : IUploadVideo
         process.Start();
         process.WaitForExit();
         
-        //3-return TRUE if output file exists
+        //4-return TRUE if output file exists
         if (File.Exists(outputpath))
         {
             return true;
@@ -65,21 +70,19 @@ class UploadVideo : IUploadVideo
 
     }
 
-    private bool RegisterNewVideo(string uploadername, DateTime datetime, string convertedvideopath)
+    private bool RegisterNewVideo(string videoname, string uploadername, string convertedvideopath)
     {
         //1-initialize new Video model object
         Video newvideo = new Video();
         //TEST SAVING
         newvideo.UploadedBy = "UploaderTest";
-        string videotitle = Path.GetFileNameWithoutExtension(convertedvideopath);
-        newvideo.Title = videotitle;
+        newvideo.Title = videoname;
         newvideo.filePath = convertedvideopath;
-        newvideo.ReleaseDate = datetime;
         _db.Videos.AddAsync(newvideo);
         //production UPLOADERNAME
         
         //2-return True
-        bool newvideoexists = _db.Videos.Any(x => x.Title == videotitle);
+        bool newvideoexists = _db.Videos.Any(x => x.Title == videoname);
         if (newvideoexists)
         {
             return true;

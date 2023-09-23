@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model string[]
+@model List<Video>
 
 <h1>VideosPage</h1>
 
@@ -21,17 +21,20 @@
 </div>
 
 <div>
-    @{Html.RenderPartial("UploadVideo");}
+    <!--OPEN UPLOAD VIDEO MODAL WINDOW -->
+    <a asp-controller="Videos" asp-action="UploadVideo">Upload Video</a>
 </div>
 
+
 <div class="thumbnailgrid">
-    @foreach (var thumbnail in Model)
+    @foreach (var video in Model)
     {
-        <a href="@Url.Action("PlayVideo", "Videos")">
-            <img class="thumbnail" src="~/storage/Thumbnails/@Html.GetFileName(thumbnail)" />
+        <a href="@Url.Action("PlayVideo", "Videos", new { id = video.Id})">
+            <img class="thumbnail" src="@video.thumbnailpath" />
         </a>
     }
 </div>
 
-
-
+<!-- 
+<img class="thumbnail" src="~/storage/Thumbnails/Html.GetFileName(thumbnail)" />
+-->

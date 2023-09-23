@@ -2,5 +2,5 @@
 
 public interface IUploadVideo
 { 
-    public string UploadVideoFile(string videoname, string uploadername, DateTime datetime, IFormFile videofile);
+    public string UploadVideoFile(string videoname, string uploadername, IFormFile videofile);
 }

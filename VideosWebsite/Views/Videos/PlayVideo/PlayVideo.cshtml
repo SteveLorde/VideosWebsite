@@ -1,6 +1,19 @@
-﻿
+﻿@using Microsoft.CodeAnalysis
+@model Video
+
+@{
+    string videoidstring = "";
+    videoidstring = Context.GetRouteValue("id").ToString();
+    int videoid = int.Parse(videoidstring);
+
+}
+
 <button>Back</button>
 
+<h1>@Model.Title</h1>
+
 <video controls>
-    <source src="@Url.Action("ReturnVideoTest", "Videos")" autoplay="autoplay">
+    <source src="@Url.Action("StreamVideo", "Videos", new { id = videoid })" autoplay="autoplay">
 </video>
+
+

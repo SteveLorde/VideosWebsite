@@ -1,8 +1,11 @@
 ﻿
 
 <div>
-    <form action="https://localhost/Videos/StoreVideo" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="file"/>
+    <h2 class="modaltitle">Upload Video</h2>
+    <form asp-controller="Videos" asp-action="" method="post" enctype="multipart/form-data">
+        <label>Video Title</label>
+        <input type="file" id="file"/>
+        <input type="text" value=" " hidden="hidden"/>
         <button type="submit">Upload Video</button>
     </form>
 </div>

@@ -17,57 +17,39 @@ public class VideosController : Controller
         _videostream = videostream;
     }
     
-    //AUTOMATIC GET
     public IActionResult Index()
     {
-        //var videos = _videoaccess.GetVideos();
         var thumbnails = _videoaccess.GetThumbnails();
         return View();
     }
-    
-    
-    // GET
-    public IActionResult VideosPage()
-    {
-        return View("~/Views/Pages/VideosPage.cshtml");
-    }
-    
+
     public IActionResult PlayVideo(int id)
     {
-        var video = _videostream.StreamVideo(id);
+        var video = _videoaccess.GetVideo(id);
         return View("PlayVideo/PlayVideo", video);
     }
-    
-    public IActionResult PlayVideoTest()
-    {
-        var video = _videostream.StreamVideoTest();
-        return View("PlayVideo/PlayVideo");
-    }
 
-    public IResult ReturnVideoTest()
+    public Task<FileStreamResult> StreamVideo(int id)
     {
-        var video = _videostream.StreamVideoTest();
-        return video;
+        var videofile = _videostream.StreamVideo(id);
+        return videofile;
     }
 
 
     [HttpPost]
-    public async Task<string> StoreVideo(IFormFile videofile)
+    public async Task<string> UploadVideo(string videoname, string uploadername, IFormFile videofile)
     {
         try
         {
-            string path = Path.Combine("VideosStorage/Storage/Videos1");
+            
             return "Uploaded Successfully";
         }
         catch (Exception ex)
         {
-            return "Failed";
+            return "Upload Failed";
         }
         
     }
 
 
-    
-    
-    
 }
