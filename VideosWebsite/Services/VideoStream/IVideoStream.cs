@@ -4,6 +4,6 @@ namespace VideosWebsite.Services.VideoStream;
 
 public interface IVideoStream
 {
-    public Task<FileStreamResult> StreamVideo(int id);
-    public IResult StreamVideoTest();
+    public IResult StreamVideo(int id);
+    //public IResult StreamVideoTest();
 }

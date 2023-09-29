@@ -22,5 +22,6 @@ body {
 }
 
 .thumbnail {
-  width: 70px;
+  width: 300px;
+  margin: 5px;
 }

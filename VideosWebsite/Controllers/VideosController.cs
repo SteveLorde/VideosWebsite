@@ -19,20 +19,19 @@ public class VideosController : Controller
     
     public IActionResult Index()
     {
-        var thumbnails = _videoaccess.GetThumbnails();
-        return View();
+        List<Video> videosdata = _videoaccess.GetThumbnails();
+        return View(videosdata);
     }
 
     public IActionResult PlayVideo(int id)
     {
-        var video = _videoaccess.GetVideo(id);
+        Video video = _videoaccess.GetVideoData(id);
         return View("PlayVideo/PlayVideo", video);
     }
 
-    public Task<FileStreamResult> StreamVideo(int id)
+    public IResult StreamVideo(int id)
     {
-        var videofile = _videostream.StreamVideo(id);
-        return videofile;
+        return _videostream.StreamVideo(id);
     }
 
 

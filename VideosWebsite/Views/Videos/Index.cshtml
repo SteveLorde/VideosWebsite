@@ -8,8 +8,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model List<Video>
-
 <h1>VideosPage</h1>
 
 <div>
@@ -27,14 +25,10 @@
 
 
 <div class="thumbnailgrid">
-    @foreach (var video in Model)
+    @foreach (Video video in Model)
     {
         <a href="@Url.Action("PlayVideo", "Videos", new { id = video.Id})">
             <img class="thumbnail" src="@video.thumbnailpath" />
         </a>
     }
 </div>
-
-<!-- 
-<img class="thumbnail" src="~/storage/Thumbnails/Html.GetFileName(thumbnail)" />
--->

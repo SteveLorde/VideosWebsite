@@ -1,15 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
     </PropertyGroup>
 
     <ItemGroup>
       <Folder Include="Data\DatabaseMigrations\" />
-      <Folder Include="Storage\GIFs\" />
-      <Folder Include="Storage\Thumbnails\" />
+      <Folder Include="Storage\" />
+      <Folder Include="wwwroot\GIFs\" />
     </ItemGroup>
 
     <ItemGroup>
@@ -19,14 +20,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Update="wwwroot\videos\Video1.mp4">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <Content Update="Storage/*" Pack="true">
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       </Content>
-      <Content Update="wwwroot\videos\Video2.webm">
-        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\Thumbnails\Video1.png" />
+      <None Include="wwwroot\Thumbnails\Video2.png" />
+      <None Include="wwwroot\Thumbnails\Video3.png" />
     </ItemGroup>
 
 </Project>
