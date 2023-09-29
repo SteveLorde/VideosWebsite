@@ -3,6 +3,5 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
-/VideosStorage/Storage/
-VideosWebsite/wwwroot/videos
 VideosWebsite/Services/UploadVideo/ffmpeg
+VideosStorage/wwwroot/

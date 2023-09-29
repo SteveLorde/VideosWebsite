@@ -9,7 +9,6 @@
 
     <ItemGroup>
       <Folder Include="Data\DatabaseMigrations\" />
-      <Folder Include="Storage\" />
       <Folder Include="wwwroot\GIFs\" />
     </ItemGroup>
 
