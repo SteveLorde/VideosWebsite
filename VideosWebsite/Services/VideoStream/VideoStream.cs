@@ -21,11 +21,17 @@ class VideoStream : IVideoStream
         return GetVideo(id);
     }
 
+    public void LikeVideo(int id)
+    {
+        Video selectedvideo = _db.Videos.First(x => x.Id == id);
+        selectedvideo.Likes += 1;
+    }
+
 
     private IResult GetVideo(int id)
     {
         Video video = _db.Videos.FirstOrDefault(x => x.Id == id);
-        string filepath = $@"..{video.filePath}";
+        string filepath = $@"..{video.filename}";
         if (File.Exists(filepath))
         {
             var videofile = System.IO.File.OpenRead(filepath);

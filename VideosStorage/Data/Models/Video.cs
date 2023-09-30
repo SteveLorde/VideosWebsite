@@ -10,7 +10,7 @@ public class Video
     public string[] Tags { get; set; }
     public string UploadedBy { get; set; }
     public string thumbnailpath { get; set; }
-    public string filePath { get; set; }
-    public int? Likes { get; set; }
+    public string filename { get; set; }
+    public int Likes { get; set; }
 
 }

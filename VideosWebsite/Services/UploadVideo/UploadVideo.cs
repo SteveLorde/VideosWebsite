@@ -77,7 +77,7 @@ class UploadVideo : IUploadVideo
         //TEST SAVING
         newvideo.UploadedBy = "UploaderTest";
         newvideo.Title = videoname;
-        newvideo.filePath = convertedvideopath;
+        newvideo.filename = convertedvideopath;
         _db.Videos.AddAsync(newvideo);
         //production UPLOADERNAME
         

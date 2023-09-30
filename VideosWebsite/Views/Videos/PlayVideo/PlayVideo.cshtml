@@ -15,7 +15,9 @@
 <div>
     <h1>@Model.Title</h1>
     <div>
-        <img/>
+        <a href="@Url.Action("LikeVideo", "Videos", new { id = videoid})">
+            <img/>
+        </a>
         <h2>@Model.Likes</h2>
     </div>
 </div>

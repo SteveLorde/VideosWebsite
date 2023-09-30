@@ -34,6 +34,11 @@ public class VideosController : Controller
         return _videostream.StreamVideo(id);
     }
 
+    public void LikeVideo(int id)
+    {
+       _videostream.LikeVideo(id);
+    }
+
 
     [HttpPost]
     public async Task<string> UploadVideo(string videoname, string uploadername, IFormFile videofile)

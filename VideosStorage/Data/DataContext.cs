@@ -17,6 +17,7 @@ public class DataContext : DbContext
     }
 
     //entites
+    public DbSet<Admin> Admins { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Video> Videos { get; set; }
     
