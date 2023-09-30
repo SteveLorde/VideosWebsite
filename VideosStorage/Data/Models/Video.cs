@@ -11,5 +11,6 @@ public class Video
     public string UploadedBy { get; set; }
     public string thumbnailpath { get; set; }
     public string filePath { get; set; }
+    public int? Likes { get; set; }
 
 }

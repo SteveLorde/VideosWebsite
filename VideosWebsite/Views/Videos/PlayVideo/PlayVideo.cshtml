@@ -10,7 +10,15 @@
 
 <button>Back</button>
 
-<h1>@Model.Title</h1>
+
+
+<div>
+    <h1>@Model.Title</h1>
+    <div>
+        <img/>
+        <h2>@Model.Likes</h2>
+    </div>
+</div>
 
 <video controls>
     <source src="@Url.Action("StreamVideo", "Videos", new { id = videoid })" autoplay="true">
